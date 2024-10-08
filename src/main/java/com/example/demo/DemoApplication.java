@@ -11,14 +11,21 @@ import java.util.Iterator;
 public class DemoApplication {
 	@Bean
 	public String test(){
-		return "ffffff";
+		return "test1";
+	}
+	@Bean
+	public String test2(){
+		return "test2";
+	}
+	@Bean
+	public Student student(){
+		return new Student();
 	}
 	public static void main(String[] args) {
 		ConfigurableApplicationContext run = SpringApplication.run(DemoApplication.class, args);
 		Iterator<String> beanNamesIterator = run.getBeanFactory().getBeanNamesIterator();
         while (beanNamesIterator.hasNext()){
 			String next = beanNamesIterator.next();
-			System.out.println(next);
 		}
 	}
 }

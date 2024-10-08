@@ -33,12 +33,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class TestController {
 //  빈에 꺼내 쓰는 것 (의존성 주입)
-    @Autowired
-    String test;
+    String test2;
+    Student 김현정;
+    Data data;
+
+    public TestController(String test2, Student 김현정, Data data) {
+        this.test2 = test2;
+        this.김현정 = 김현정;
+        this.data = data;
+    }
 
     @RequestMapping
     public String index(HttpServletRequest request){
-        System.out.println(test);
+        System.out.println(data.list.get(0) == 김현정);
         return "index";
     }
     // localhost:8080/java

@@ -11,4 +11,9 @@ public class Student {
                 ", age=" + age +
                 '}';
     }
+
+    public Student() {
+        this.name = "김현정";
+        this.age = 20;
+    }
 }
