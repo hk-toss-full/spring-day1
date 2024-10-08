@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -52,11 +53,12 @@ public class TestController {
         return "index";
     }
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String postStudent(HttpServletRequest request){
-        String name = request.getParameter("name");
-        Integer age = Integer.parseInt(request.getParameter("age"));
-        System.out.println(name + " " + age);
-        return "index";
+    public String postStudent(
+            @RequestParam String name
+            , @RequestParam Integer age){
+        Student student = new Student(name, age);
+        data.list.add(student);
+        return "redirect:/";
     }
     // localhost:8080/java
     @RequestMapping(value = "/java", method = RequestMethod.GET)

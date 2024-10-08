@@ -16,4 +16,9 @@ public class Student {
         this.name = "김현정";
         this.age = 20;
     }
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
 }
