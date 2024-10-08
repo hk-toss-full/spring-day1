@@ -1,8 +1,8 @@
 package com.example.demo;
 
 public class Student {
-    private String name;
-    private int age;
+    public String name;
+    public int age;
 
     @Override
     public String toString() {

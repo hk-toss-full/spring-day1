@@ -3,8 +3,13 @@ package com.example.demo;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Set;
 
 // 컨트롤러 유저가 보는 곳
 // @ annotation
@@ -30,22 +35,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 // bean 스프링 내부에서 관리하는 static
 // bean 들을 모아놓은 곳  IoC 컨테이너
 
+
+// method: GET, POST
+// GET body x url ? 데이터 =fdsfds
+// POST body o json: {데이터:"ㄴㅇㄻ"}
+
 @Controller
 public class TestController {
 //  빈에 꺼내 쓰는 것 (의존성 주입)
     String test2;
     Student 김현정;
     Data data;
-
-    public TestController(String test2, Student 김현정, Data data) {
-        this.test2 = test2;
-        this.김현정 = 김현정;
-        this.data = data;
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index(Model model){
+        model.addAttribute("list", data.list);
+        return "index";
     }
-
-    @RequestMapping
-    public String index(HttpServletRequest request){
-        System.out.println(data.list.get(0) == 김현정);
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public String postStudent(HttpServletRequest request){
+        String name = request.getParameter("name");
+        Integer age = Integer.parseInt(request.getParameter("age"));
+        System.out.println(name + " " + age);
         return "index";
     }
     // localhost:8080/java
@@ -57,4 +67,12 @@ public class TestController {
     public String test(){
         return "test";
     }
+
+
+    public TestController(String test2, Student 김현정, Data data) {
+        this.test2 = test2;
+        this.김현정 = 김현정;
+        this.data = data;
+    }
+
 }
